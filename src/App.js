@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css";
 
-function App() {
+export default function App() {
+  const [counter, setCounter] = React.useState(5);
+
+  const handleIncrement = (value) => {
+    setCounter(counter + value);
+  };
+
+  const handleMultipyByTwo = (value) => {
+    setCounter(counter * value)
+  }
+
+  const resetVal = () => {
+    setCounter(0)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Counter</h1>
+      <h2>{counter}</h2>
+      <button onClick={() => handleIncrement(1)}>ADD</button>
+      <button onClick={() => handleIncrement(-1)}>REDUCE</button>
+      <button onClick={() => handleMultipyByTwo(2)}>DOUBLE</button>
+      <button onClick={() => resetVal()}>RESET</button>
     </div>
-  );
+  )
 }
-
-export default App;
